@@ -5,14 +5,12 @@ const db = require("../models");
 module.exports = function(app) {
 
     // index route loads cms.html
-    app.post("/api/search", function(req, res) {
+    app.post("/api/search", async function(req, res) {
         axios.get(`https://factchecktools.googleapis.com/v1alpha1/claims:search?languageCode=en&query=${req.body.searchEncoded}&key=AIzaSyAYJ05r2WOK34MO9zLkmaz0Ux9NWnYTCcI`)
             .then(async function(res) {
                 var response = res.data.claims;
 
                 for (i = 0; i < 5; i++) {
-                    console.log(response[i].claimReview[0].publisher.site);
-
                     await db.Search.create({
                         query: req.body.search,
                         title: response[i].claimReview[0].title,
@@ -23,9 +21,12 @@ module.exports = function(app) {
                     })
                 }
             });
-
+        await app.get("/api/display", function(req, res) {
+            db.Search.findAll({}).then(function(results) {
+                console.log(results)
+                res.json(results);
+            })
+        });
     });
-    app.get("/api/display", function(req, res) {
 
-    });
 }

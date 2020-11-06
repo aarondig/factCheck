@@ -18,53 +18,49 @@ $(document).on('keypress', function(event) {
                 // location.reload();
             }
         );
-
-
-        // Display fact checks from database
-        $.get("/api/display", function(data) {
-
-            if (data.length !== 0) {
-
-                for (var i = 0; i < data.length; i++) {
-
-                    var card = $("<a>").attr("href", data[i].url);
-                    card.addClass("ui card");
-
-                    var content = $("<div>");
-                    content.addClass("content");
-                    card.append(content);
-
-                    var header = $("<div>").html(data[i].title);
-                    header.addClass("header");
-                    content.append(header);
-
-                    // var meta = $("<div>").html(data[i].publisher);
-                    // meta.addClass("meta");
-                    // content.append(meta);
-
-                    var description = $("<div>").html("<p>" + data[i].body + "</p>");
-                    description.addClass("description");
-                    content.append(header);
-
-                    var rating = $("<div>").html("<i>" + data[i].rating + "</i>");
-                    rating.addClass("extra content");
-                    content.append(rating);
-
-                    // card.append("<h2>" + "TITLE: " + data[i].title + " </h2>");
-                    // card.append("<p>" + "TEXT: " + data[i].body + "</p>");
-                    // card.append("<p>" + "URL: " + data[i].url + "</p>");
-                    // card.append("<p>" + "RATING: " + data[i].rating + "</p>");
-
-                    $("#factchecks").prepend(card);
-
-                }
-
-            }
-
-        });
+        getData();
     }
 });
 
+// Display fact checks from database
+function getData() {
+    $.get("/api/display", function(data) {
+        console.log(data);
+        // if (data.length !== 0) {
+
+        //     for (var i = 0; i < data.length; i++) {
+
+        //         var card = $("<a>").attr("href", data[i].url);
+        //         card.addClass("ui card");
+
+        //         var content = $("<div>");
+        //         content.addClass("content");
+        //         card.append(content);
+
+        //         var header = $("<div>").html(data[i].title);
+        //         header.addClass("header");
+        //         content.append(header);
+
+        //         // var meta = $("<div>").html(data[i].publisher);
+        //         // meta.addClass("meta");
+        //         // content.append(meta);
+
+        //         var description = $("<div>").html("<p>" + data[i].body + "</p>");
+        //         description.addClass("description");
+        //         content.append(header);
+
+        //         var rating = $("<div>").html("<i>" + data[i].rating + "</i>");
+        //         rating.addClass("extra content");
+        //         content.append(rating);
+
+        //         $("#factchecks").prepend(card);
+
+        //     }
+
+        // }
+
+    });
+}
 // CARD FLIP
 
 var $num = $('.cardContainer .card').length;
