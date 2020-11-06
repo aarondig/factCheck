@@ -1,7 +1,26 @@
-const axios = require("axios");
+// Requiring necessary npm packages
+var express = require("express");
 
-axios
-    .get("https://factchecktools.googleapis.com/v1alpha1/claims:search?query=flat%20earth&key=AIzaSyAYJ05r2WOK34MO9zLkmaz0Ux9NWnYTCcI")
-    .then(function(res) {
-        console.log(res.data);
+// Setting up port and requiring models for syncing
+var PORT = process.env.PORT || 3000;
+var db = require("./models");
+
+// Creating express app and configuring middleware needed for authentication
+var app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
+
+// Requiring our routes
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
+// require("./routes/search-api-routes.js")(app);
+
+// Syncing our database and logging a message to the user upon success
+// listens to the PORT
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
     });
+});
