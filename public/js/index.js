@@ -6,14 +6,6 @@ $(document).on('keypress', function(event) {
 
         event.preventDefault();
 
-        // let results = {
-        //     search_term: $("#search").val().trim(),
-        //     title: response.claims[0].claimReview[0].title,
-        //     body: response.claims[0].text,
-        //     url: response.claims[0].claimReview[0].url,
-        //     rating: response.claims[0].claimReview[0].textualRating
-        // }
-
         $.ajax("/api/search", {
             type: "POST",
             data: {
@@ -111,7 +103,7 @@ $('.cardContainer .card').on('click', function() {
     $(this).next().addClass('next');
 });
 
-// Keyboard nav
+// KEYBOARD NAV
 $('html body').keydown(function(e) {
     if (e.keyCode == 37) { // left
         $('.cardContainer .active').prev().trigger('click');
@@ -120,6 +112,7 @@ $('html body').keydown(function(e) {
     }
 });
 
+//RIPPLE EFFECT
 
 var timesClicked = 1;
 

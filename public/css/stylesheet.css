@@ -347,72 +347,6 @@ body {
     display: none;
 }
 
-@media only screen and (max-width: 700px) {
-    .ui.fixed.menu {
-        display: none !important;
-    }
-    .secondary.pointing.menu .item,
-    .secondary.pointing.menu .menu {
-        display: none !important;
-    }
-    .secondary.pointing.menu .toc.item {
-        display: block !important;
-    }
-    .ui.container {
-        display: inline !important;
-    }
-    .masthead.segment {
-        min-height: 350px;
-    }
-    .masthead h1.ui.header {
-        font-size: 4em !important;
-        margin-top: 1.5em;
-        text-align: center;
-        z-index: 8 !important;
-    }
-    .masthead h2 {
-        margin-top: 0.5em;
-        font-size: 1.5em;
-        text-align: center;
-        z-index: 7 !important;
-    }
-    .cardContainer {
-        display: inline-flex !important;
-    }
-    .ball {
-        display: none;
-    }
-    .search {
-        position: relative !important;
-        margin: auto !important;
-        width: 200px !important;
-        height: 200px !important;
-        top: 15% !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-    }
-    .container .search::before {
-        top: 50px;
-        right: 0;
-        bottom: 0;
-        left: 50px;
-        width: 25px;
-        height: 2px;
-    }
-    .container .search::after {
-        top: -9px;
-        right: 0;
-        bottom: 0;
-        left: -9px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 2px solid white;
-        transition: all 0.5s;
-    }
-}
-
 
 /* CARDSSSS */
 
@@ -546,4 +480,68 @@ svg {
 .card:hover .stroke {
     stroke-dashoffset: 100;
     transition: 0.6s ease-out;
+}
+
+@media only screen and (max-width: 700px) {
+    .ui.fixed.menu {
+        display: none !important;
+    }
+    .secondary.pointing.menu .item,
+    .secondary.pointing.menu .menu {
+        display: none !important;
+    }
+    .secondary.pointing.menu .toc.item {
+        display: block !important;
+    }
+    .ui.container {
+        display: inline !important;
+    }
+    .masthead.segment {
+        min-height: 350px;
+    }
+    .masthead h1.ui.header {
+        font-size: 4em !important;
+        margin-top: 1.5em;
+        text-align: center;
+    }
+    .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .cardContainer {
+        display: inline-flex !important;
+    }
+    .ball {
+        display: none;
+    }
+    .search {
+        position: relative !important;
+        margin: auto !important;
+        width: 200px !important;
+        height: 200px !important;
+        top: 15% !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+    }
+    .container .search::before {
+        top: 50px;
+        right: 0;
+        bottom: 0;
+        left: 50px;
+        width: 25px;
+        height: 2px;
+    }
+    .container .search::after {
+        top: -9px;
+        right: 0;
+        bottom: 0;
+        left: -9px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid white;
+        transition: all 0.5s;
+    }
 }
