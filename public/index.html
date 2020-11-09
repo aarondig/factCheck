@@ -48,64 +48,66 @@
         </div>
       </div>
 
-      <div class="ui vertical stripe segment" id="featured">
-        <div class="row">
-          <div class="eight wide column">
-            <h3 class="ui center aligned header inverted">Featured</h3>
+      <div class="ui vertical stripe segment" id="return">
+        <div class="ui one column grid">
+          <div class="center aligned column">
+            <h2 class="ui header inverted" id="queryName"></h2>
           </div>
-          <div class="cardContainer">
-            <div class="card">
-              <h3 class="title">Top Fact</h3>
-              <div class="bar">
-                <div class="emptybar"></div>
-                <div class="filledbar"></div>
-              </div>
-              <div class="circle">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="stroke" cx="60" cy="60" r="50" />
-                </svg>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="title">Card 2</h3>
-              <div class="bar">
-                <div class="emptybar"></div>
-                <div class="filledbar"></div>
-              </div>
-              <div class="circle">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="stroke" cx="60" cy="60" r="50" />
-                </svg>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="title">Card 3</h3>
-              <div class="bar">
-                <div class="emptybar"></div>
-                <div class="filledbar"></div>
-              </div>
-              <div class="circle">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="stroke" cx="60" cy="60" r="50" />
-                </svg>
-              </div>
-            </div>
-            <div class="card">
-              <h3 class="title">Card 4</h3>
-              <div class="bar">
-                <div class="emptybar"></div>
-                <div class="filledbar"></div>
-              </div>
-              <div class="circle">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="stroke" cx="60" cy="60" r="50" />
-                </svg>
-              </div>
-            </div>
+          <div class="floated center column">
+            <div class="cardContainer" id="factchecks"></div>
           </div>
         </div>
+        <!-- <div class="cardContainer">
+              <div class="card">
+                <h3 class="title">Top Fact</h3>
+                <div class="bar">
+                  <div class="emptybar"></div>
+                  <div class="filledbar"></div>
+                </div>
+                <div class="circle">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="stroke" cx="60" cy="60" r="50" />
+                  </svg>
+                </div>
+              </div>
+              <div class="card ani">
+                <h3 class="title">Card 2</h3>
+                <div class="bar">
+                  <div class="emptybar"></div>
+                  <div class="filledbar"></div>
+                </div>
+                <div class="circle">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="stroke" cx="60" cy="60" r="50" />
+                  </svg>
+                </div>
+              </div>
+              <div class="card ani">
+                <h3 class="title">Card 3</h3>
+                <div class="bar">
+                  <div class="emptybar"></div>
+                  <div class="filledbar"></div>
+                </div>
+                <div class="circle">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="stroke" cx="60" cy="60" r="50" />
+                  </svg>
+                </div>
+              </div>
+              <div class="card ani">
+                <h3 class="title">Card 4</h3>
+                <div class="bar">
+                  <div class="emptybar"></div>
+                  <div class="filledbar"></div>
+                </div>
+                <div class="circle">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="stroke" cx="60" cy="60" r="50" />
+                  </svg>
+                </div>
+              </div>
+            </div> -->
       </div>
-      <div id="factchecks"></div>
     </div>
 
     <!-- <div class="ui inverted vertical footer segment">
@@ -117,6 +119,22 @@
             </div>
         </div>
     </div> -->
+    <div class="card">
+        <div class="content">
+            <div class="card-back">
+                <div class="banner">${data[i].title}
+                    <div class="header">${data[i].title}</div>
+                    <div class="meta">${data[i].publisher}</div>
+                </div>
+                <div class="description">
+                    <p>${data[i].text}</p>
+                </div>
+            </div>
+            <div class="card-front ${data[i].id}">
+                <div class="header">${data[i].rating}
+            </div>
+        </div>
+  </div>
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

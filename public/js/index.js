@@ -23,75 +23,115 @@ $(document).on("keypress", function (event) {
 // Display fact checks from database
 function getData() {
   $.get("/api/display", function (data) {
-    console.log(data);
     $("#factchecks").empty();
+    $("#factchecks").removeAttr("style");
     if (data.length !== 0) {
       for (var i = 0; i < data.length; i++) {
-        var html = `<a href="${data[i].url}">
-        <div class="ui card">
-        <div class="content">
-          <div class="header">${data[i].title}</div>
-          <div class="meta">${data[i].publisher}</div>
-          <div class="description">
-            <p>${data[i].text}</p>
-          </div>
-        </div>
-        <div class="extra content">
-          ${data[i].rating}
-        </div>
+        var html = `
+        <div class="card">
+            <div class="content">
+                <div class="card-back">
+                    <div class="header">${data[i].title}</div>
+                    <div class="meta">${data[i].publisher}</div>
+                    <div class="description">
+                        <p>${data[i].text}</p>
+                    </div>
+                </div>
+                <div class="card-front ${data[i].id}">
+                    <div class="header">${data[i].rating}
+                </div>
+            </div>
       </div>
-      </a>`;
-
+      `;
+        //   <div class="extra content">
+        //       ${data[i].rating}
+        //     </div>
+        //   <a href="${data[i].url}"></a>
+        var cardnum = JSON.stringify(data[i].id);
+        // var cardnum = document.getElementsByClassName(data[i].id);
+        // console.log(cardnum);
         $("#factchecks").prepend(html);
+        if (`${data[i].rating}` === "False") {
+          $("." + cardnum).addClass("false");
+        }
+        if (`${data[i].rating}` === "True") {
+          $("." + cardnum).addClass("true");
+        }
+        if (`${data[i].rating}` === "Mostly false") {
+          $("." + cardnum).addClass("mostlyFalse");
+        }
+        if (
+          `${data[i].rating}` === "Half true" ||
+          `${data[i].rating}` === "Partly False"
+        ) {
+          $("." + cardnum).addClass("warning");
+        }
+        if (`${data[i].rating}` === "Satire") {
+          $("." + cardnum).addClass("satire");
+        }
+        // if (`${data[i].rating}` == "True") {
+        //   $(".card-front").addClass("true");
+        // }
+        // if (`${data[i].rating}` == "Half" || "Missing Context" || "Partly") {
+        //   $(".card-front").addClass("warning");
+        // }
       }
+      var query = `"${data[0].query}"`;
+      $("#queryName").html(query.toUpperCase());
+
+      cardflip();
+    }
+    if (data == 0) {
+      alert("No Articles Found.");
     }
   });
 }
 // CARD FLIP
+function cardflip() {
+  var $num = $(".cardContainer .card").length;
+  var $even = $num / 2;
+  var $odd = ($num + 1) / 2;
+  console.log($even);
+  console.log($odd);
+  if ($num % 2 == 0) {
+    $(".cardContainer .card:nth-child(" + $even + ")").addClass("active");
+    $(".cardContainer .card:nth-child(" + $even + ")")
+      .prev()
+      .addClass("prev");
+    $(".cardContainer .card:nth-child(" + $even + ")")
+      .next()
+      .addClass("next");
+  } else {
+    $(".cardContainer .card:nth-child(" + $odd + ")").addClass("active");
+    $(".cardContainer .card:nth-child(" + $odd + ")")
+      .prev()
+      .addClass("prev");
+    $(".cardContainer .card:nth-child(" + $odd + ")")
+      .next()
+      .addClass("next");
+  }
 
-var $num = $(".cardContainer .card").length;
+  $(".cardContainer .card").on("click", function () {
+    if ($(".cardContainer").is(":animated")) {
+      return;
+    }
 
-var $even = $num / 2;
-var $odd = ($num + 1) / 2;
+    var $slide = $(".cardContainer .active").width() + 400;
 
-if ($num % 2 == 0) {
-  $(".cardContainer .card:nth-child(" + $even + ")").addClass("active");
-  $(".cardContainer .card:nth-child(" + $even + ")")
-    .prev()
-    .addClass("prev");
-  $(".cardContainer .card:nth-child(" + $even + ")")
-    .next()
-    .addClass("next");
-} else {
-  $(".cardContainer .card:nth-child(" + $odd + ")").addClass("active");
-  $(".cardContainer .card:nth-child(" + $odd + ")")
-    .prev()
-    .addClass("prev");
-  $(".cardContainer .card:nth-child(" + $odd + ")")
-    .next()
-    .addClass("next");
+    if ($(this).hasClass("next")) {
+      $(".cardContainer").animate({ left: "-=" + $slide });
+    } else if ($(this).hasClass("prev")) {
+      $(".cardContainer").animate({ left: "+=" + $slide });
+    }
+
+    $(this).removeClass("prev next");
+    $(this).siblings().removeClass("prev active next");
+
+    $(this).addClass("active");
+    $(this).prev().addClass("prev");
+    $(this).next().addClass("next");
+  });
 }
-
-$(".cardContainer .card").on("click", function () {
-  if ($(".cardContainer").is(":animated")) {
-    return;
-  }
-
-  var $slide = $(".cardContainer .active").width();
-
-  if ($(this).hasClass("next")) {
-    $(".cardContainer").animate({ left: "-=" + $slide });
-  } else if ($(this).hasClass("prev")) {
-    $(".cardContainer").animate({ left: "+=" + $slide });
-  }
-
-  $(this).removeClass("prev next");
-  $(this).siblings().removeClass("prev active next");
-
-  $(this).addClass("active");
-  $(this).prev().addClass("prev");
-  $(this).next().addClass("next");
-});
 
 // KEYBOARD NAV
 $("html body").keydown(function (e) {
