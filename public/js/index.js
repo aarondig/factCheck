@@ -31,14 +31,14 @@ function getData() {
         <div class="card">
             <div class="content">
                 <div class="card-back">
-                    <div class="header">${data[i].title}</div>
                     <div class="meta">${data[i].publisher}</div>
                     <div class="description">
                         <p>${data[i].text}</p>
                     </div>
                 </div>
                 <div class="card-front ${data[i].id}">
-                    <div class="header">${data[i].rating}
+                    <div class="review">${data[i].rating}</div>
+                    <div class="header">${data[i].title}</div>
                 </div>
             </div>
       </div>
