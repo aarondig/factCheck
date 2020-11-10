@@ -374,11 +374,6 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-/* .card:hover .content {
-  transform: rotateY(180deg);
-} */
-
 .card.active:hover .card-front {
   transform: rotateY(180deg);
 }
@@ -392,8 +387,6 @@ body {
 .card-back {
   display: flex;
   position: absolute;
-  width: 100%;
-  height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
   background-size: cover;
@@ -405,17 +398,13 @@ body {
   box-shadow: -1rem 0 3rem #000 !important;
   width: 500px !important;
   height: 300px !important;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .card-front {
   background: linear-gradient(to right, #1c1c1c, #1e1e1e);
   color: black;
-  align-items: center;
-}
-
-.card-front.false {
-  /* background: rgb(115, 33, 33) !important; */
-  color: rgb(115, 33, 33) !important;
   align-items: center;
 }
 
@@ -428,13 +417,16 @@ body {
 }
 .card-front .review {
   position: absolute;
+  width: 100%;
   font-size: 8em;
   font-weight: 900;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
+  line-height: 1.2em;
+  text-align: left;
   color: rgba(255, 255, 255, 0.05);
-  top: -10px;
-  left: -10px;
+  top: 20px;
+  left: 25px;
 }
 .card-front .header {
   position: relative;
@@ -444,6 +436,9 @@ body {
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
+  line-height: 1.2em;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .card-back .banner {
@@ -459,18 +454,61 @@ body {
   text-align: left;
 }
 
+/* TRUTH INDICATOR */
+
+/* .bar {
+  position: absolute;
+  top: 230px;
+  left: 100px;
+  height: 10px;
+  width: 300px;
+  border-radius: 30px;
+}
+
+.emptybar {
+  background: #2e303300;
+  width: 100%;
+  height: 100%;
+}
+.card:hover .emptybar {
+  border-radius: 30px;
+  background: linear-gradient(
+    90deg,
+    rgb(168, 66, 66) 20%,
+    rgb(221, 201, 102) 50%,
+    rgb(54, 115, 202) 80%
+  ) !important;
+}
+
+.filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 300px;
+  height: 100%;
+  background-color: #2e3033;
+  transition: 0.6s ease-in-out;
+  border-radius: 30px;
+}
+
+.card:hover .filledbar {
+  width: 100px;
+  transition: 0.4s ease-in-out;
+} */
+
+/* CARD INDEX */
+
 .cardContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  left: calc(50% - 1050px);
+  left: calc(50% - 53vw);
   margin-bottom: 200px;
   margin-top: 50px;
 }
 
 .cardContainer .card {
-  /* position: relative; */
   z-index: 1;
   -webkit-transform: scale(0.6) translateY(-2rem);
   transform: scale(0.6) translateY(-2rem);

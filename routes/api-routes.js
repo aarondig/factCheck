@@ -11,7 +11,7 @@ module.exports = function (app) {
     var response = result.data.claims;
 
     await db.Search.destroy({ where: {} });
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < response.length; i++) {
       await db.Search.create({
         query: req.body.search,
         title: response[i].claimReview[0].title,

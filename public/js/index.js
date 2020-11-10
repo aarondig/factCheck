@@ -16,6 +16,7 @@ $(document).on("keypress", function (event) {
       // Reload the page to get the updated list
       // location.reload();
       getData();
+      $(".search").trigger("click");
     });
   }
 });
@@ -194,5 +195,8 @@ $(".search").click(function (e) {
     $(".ripple").remove();
     document.getElementById("search").style.display = "none";
     document.querySelector("h2").style.color = "#ffff";
+    // $(".ripple").fadeOut(1000, function () {
+    //   $(this).remove();
+    // });
   }
 });
