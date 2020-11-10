@@ -16,7 +16,11 @@ $(document).on("keypress", function (event) {
       // Reload the page to get the updated list
       // location.reload();
       getData();
-      $(".search").trigger("click");
+
+      // PAGE TRANSITION
+      $("#main").fadeOut(1000, function () {
+        $("#return:hidden").fadeIn(500);
+      });
     });
   }
 });

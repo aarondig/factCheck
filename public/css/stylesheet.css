@@ -14,12 +14,25 @@ body {
 
 /* LANDING */
 
+#main {
+  display: block;
+}
+#mainContainer {
+  position: relative;
+  z-index: 5 !important;
+  pointer-events: none;
+}
+
+#mainHead {
+  font-size: 100px;
+}
+
 .ui.inverted.vertical.masthead.center.aligned.segment {
   background: linear-gradient(180deg, #17181c, #141414) !important;
   background-position: center !important;
   /* height: 100vh !important; */
   height: 100vh !important;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .ball {
@@ -74,19 +87,10 @@ body {
   z-index: 99 !important;
 }
 
-#mainContainer {
-  position: relative;
-  z-index: 5 !important;
-  pointer-events: none;
-}
-
-#mainHead {
-  font-size: 100px;
-}
-
 #return {
-  padding-top: 300px;
+  display: none;
 }
+
 #return h2 {
   margin-top: 20vh;
   margin-bottom: 0em;

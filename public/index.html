@@ -28,28 +28,22 @@
             <a class="item" href="#featured">Featured</a>
             <a class="item" href="#about">About</a>
             <a class="item" href="#contact">Contact</a>
-
-            <!-- <a class="item right floated" href="#login">Login</a>
-                    <p class="item">/</p>
-                    <a class="item" href="#signup">Sign Up</a> -->
           </div>
-
-          <div class="ui left aligned container" id="mainContainer">
-            <h1 class="ui inverted header" id="mainHead">Fact Check</h1>
-            <h2>Search a term, quote, and more.</h2>
+          <div id="main">
+            <div class="ui left aligned container" id="mainContainer">
+              <h1 class="ui inverted header" id="mainHead">Fact Check</h1>
+              <h2>Search a term, quote, and more.</h2>
+            </div>
+            <div class="ui container searching" id="searchContainer">
+              <input type="text" placeholder="Search..." id="search" />
+            </div>
+            <div class="search"></div>
+            <div class="ball" id="bigball"></div>
+            <div class="ball" id="mediumball"></div>
+            <div class="ball" id="smallball"></div>
           </div>
-          <div class="ui container searching" id="searchContainer">
-            <input type="text" placeholder="Search..." id="search" />
-          </div>
-          <div class="search"></div>
-          <div class="ball" id="bigball"></div>
-          <div class="ball" id="mediumball"></div>
-          <div class="ball" id="smallball"></div>
         </div>
-      </div>
-
-      <div class="ui vertical stripe segment" id="return">
-        <div class="ui one column grid">
+        <div class="ui one column grid" id="return">
           <div class="center aligned column">
             <h2 class="ui header inverted" id="queryName"></h2>
           </div>
@@ -57,6 +51,9 @@
             <div class="cardContainer" id="factchecks"></div>
           </div>
         </div>
+
+        <!-- <div class="ui vertical stripe segment"></div> -->
+
         <!-- <div class="cardContainer">
               <div class="card">
                 <h3 class="title">Top Fact</h3>
@@ -110,7 +107,7 @@
       </div>
     </div>
 
-    <!-- <div class="card">
+    <div class="card">
       <div class="content">
         <div class="card-back">
           <div class="meta">indiatoday.in</div>
@@ -133,7 +130,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
