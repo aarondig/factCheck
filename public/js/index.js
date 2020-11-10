@@ -18,8 +18,8 @@ $(document).on("keypress", function (event) {
       getData();
 
       // PAGE TRANSITION
-      $("#main").fadeOut(1000, function () {
-        $("#return:hidden").fadeIn(500);
+      $("#main").fadeOut(600, function () {
+        $("#return:hidden").fadeIn(1000);
       });
     });
   }
@@ -36,10 +36,14 @@ function getData() {
         <div class="card">
             <div class="content">
                 <div class="card-back">
+                  <a href="${data[i].url}">
                     <div class="meta">${data[i].publisher}</div>
+                  
                     <div class="description">
-                        <p>${data[i].text}</p>
+                      <p>${data[i].text}</p>
                     </div>
+                  </a>
+                  <div class="banner"></div>
                 </div>
                 <div class="card-front ${data[i].id}">
                     <div class="review">${data[i].rating}</div>
