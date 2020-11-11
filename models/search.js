@@ -1,4 +1,3 @@
-// Creating Search model
 module.exports = function (sequelize, DataTypes) {
   var Search = sequelize.define("Search", {
     query: {
