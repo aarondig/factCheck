@@ -179,7 +179,7 @@ $(".search").click(function (e) {
     // Add the element
     $(".search").append("<span class='ripple'></span>");
 
-    // Make it round!
+    // Make it round
     if (buttonWidth >= buttonHeight) {
       buttonHeight = buttonWidth;
     } else {
