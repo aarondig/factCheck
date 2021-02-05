@@ -1,6 +1,6 @@
 # Fact Checker
 
-![What the Fact](assets/banner.png)
+![Banner](assets/banner.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -12,14 +12,13 @@
 - [Other](#Other)
 - [Usage](#Usage)
 - [Author](Author)
-- [Credits](Credits)
 - [License](License)
 
 <br>
 
 ## Deployed Site
 
-[Fact Checker](https://what-the-fact.herokuapp.com/)
+[Fact Checker](https://googlefactchecker.herokuapp.com)
 
 <br>
 
@@ -44,57 +43,55 @@
 
 ### Search
 
-_What?_
+An application that allows you to search claims, terms and quotes, and returns fact checked articles reguarding the validitiy of the query.
 
-A search that allows you not to simply search terms, but identify claims associated with terms and rates whether they are true or not.
+_WHY_
 
-_Why?_
+In the current poilitcal climate, people are more divided than ever. Distrust in the media has led to a departure from truth, and unfavorable facts are labeled as "fake news." After the 2016 presidential election in the United States, it was uncovered that foreign entities had manipulated democracy through mass disinformation campaigns on social media, and successfully targeted Americans with false claims. This application was created months before the 2020 presidential election, with the hopes that it would safeguard democracy, and create a well enformed electorate.
 
-Even if you are smart, even if you are aware of the daily news and consider yourself a critical thinker, on occasion, something will slip by you. Some little tidbit, some little piece of something will weasel itself into your brain and you will "KNOW" it, you will share it, you will argue for it and you will convince your friends and family member that this is the truth. That this is the fact. So, we wanted to help create a better tool, an easy one to use that will allow you to stop the misinformation and maybe, will help you exclaim "what the fact!?!?!"
+_HOW_
 
-_How?_
+Using Google's "fact check" API, I created a user friendly interface that allows users to easily enter claims and recieve their articles. We used database archetecture with MySQL to save claims, with hopes of using the most-searched-for claims in a featured secton. The application was designed and developed using HTML, CSS and Javascript's JQuery. 
 
-The claim search is primarily done using google's fact checker [API](https://developers.google.com/fact-check/tools/api).
+ [API](https://developers.google.com/fact-check/tools/api).
 
--------Description of the API Goes Here--------
+### **2. User Experience**
 
-The biggest challenge using this API was figuring out where to call it and getting it to display on English results (as our site is only in English). In order to resolve our language issue we inserted a bit of code into the original API code that set the language to en
+Creating a seamless user experience was my top priority. I tried to keep a minimalist aesthetic with aesthetic transitions to seamlessly move the user from one action to another.
 
-### **2. User Friendly Search Returns**
+![Search-Results](assets/returns.png)
 
-_What?_
 
-_Why?_
+### **4. Routes**
 
-One of the most important points we all agreed on early in the build of this project was that we wanted to create something beautiful and easy to use. Being able to easily select the claim and have it show up nicely was paramount.
+Search queries are recieved in the public directory, and passed into the api-routes.js file where the API is called, using axios.js, with the query name. All data is passed using express.js.
 
-_How?_
+_RECIEVED IN PUBLIC_
 
-![Search-Results](Assets/CodeSnippet01)
+![Search-Results](assets/recieve.png)
 
-### **4. Saved Searches**
+_API-ROUTES_
 
-_What?_
+![Search-Results](assets/passed.png)
 
-_Why?_
+From here, the data is passed into the models file, where it is prepped for the mySQL database. Once written to the database, api-routes reads the database for the values that were just passed in, and returned to the public folder for creation of HTML elements.
 
-_How?_
+### **5. Models**
 
-### **5. Model View Control Design**
+Using express.js, and sequelize.js I created models for each type of data returned, so I could create HTML elements in Javascript with each specific data type.
 
-_What?_
+_MODELS_
 
-_Why?_
+![Search-Results](assets/models.png)
 
-_How?_
+Data from the API is passed into the models file from api-routes, using express.js. From there, they are stored in the MySQL database using Sequelize.
+
 
 ## Other
 
-**For later builds**
+**Future Ambitions**
 
-twitter fact check -reads through tweets and uses response to enter into the fact check api
-Comments section
-Icons/images that show up with claims
+I hope to use my knowladge of React and React Native to create a mobile application, and hopefully implement different social media api's to crossreference the claims posted with the fact check API.
 
 **Takeaway**
 
@@ -102,21 +99,17 @@ _Aaron_: "If somebody takes something from you, restart and make it better."
 
 ## Usage
 
-###
+Click the deployed link.
 
 ## Author
 
 Aaron Diggdon
 
-- [linkedin] (https://www.linkedin.com/in/rachael-kelm-southworth-87a3831b3)
+- [LinkedIn](https://www.linkedin.com/in/aarondiggdon/)
 
-- [github] (https://github.com/aarondig)
+- [Github](https://github.com/aarondig)
 
-- [portfolio](https://rksouth.github.io/responsive_portfolio/)
-
-## Credits
-
-I would like to thank me myself and I for perserviering through mutual conflict, hasty judgement, and lack of understanding to adapt to the circumstances, and create something I'm truly proud of.
+- [Portfolio](https://aarondig.github.io/aaronDiggdon/)
 
 ## License
 
